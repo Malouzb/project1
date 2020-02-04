@@ -50,6 +50,7 @@ public class SpaceEventHandler implements EventHandler<ActionEvent> {
                 Space left = board.getSpace(space.x-1, space.y);
                 Space down = board.getSpace(space.x, space.y-1);
                 Space up = board.getSpace(space.x, space.y+1);
+                if (right.isActive() || left.isActive() || down.isActive() || up.isActive())
                 board.setActive(space);
                 event.consume();
             }

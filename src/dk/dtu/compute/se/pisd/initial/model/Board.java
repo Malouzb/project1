@@ -68,11 +68,14 @@ public class Board extends Subject {
     }
 
     public void setActive(Space space) {
+        int count = 0;
         if (space.board == this) {
             if (active != null && active != space) {
                 active.setActive(false);
                 active = space;
                 active.setActive(true);
+                count++;
+
 
                 // not needed for current version; but for being clear,
                 // we add a notifyChange() here anyway!

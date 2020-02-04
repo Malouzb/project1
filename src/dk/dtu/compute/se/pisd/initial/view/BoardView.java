@@ -50,7 +50,7 @@ public class BoardView extends GridPane implements Observer {
         this.board = board;
 
         gridPane = new GridPane();
-        label = new Label("Status line: <unused for now>");
+        label = new Label("Status line:< her skal vi counte>");
 
         this.add(gridPane,0,0);
         this.add(label, 0, 1);

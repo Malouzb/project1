@@ -48,9 +48,8 @@ public class BoardView extends GridPane implements Observer {
 
     public BoardView(Board board) {
         this.board = board;
-
         gridPane = new GridPane();
-        label = new Label("Status line:< her skal vi counte>");
+        label = new Label("Status line: <counter>");
 
         this.add(gridPane,0,0);
         this.add(label, 0, 1);
@@ -67,7 +66,7 @@ public class BoardView extends GridPane implements Observer {
         }
 
         // not needed for now since only spaces change
-        // board.attach(this);
+        board.attach(this);
     }
 
     public SpaceView getSpaceView(Space space) {
@@ -83,10 +82,13 @@ public class BoardView extends GridPane implements Observer {
 
     @Override
     public void update(Subject subject) {
+
         if (subject == board) {
             if (Platform.isFxApplicationThread()) {
+
                 // here the view should be updated (e.g. the status line)
             } else {
+
                 Platform.runLater(() -> {
                     // here the view should be updated (e.g. the status line)
                 });

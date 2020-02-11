@@ -75,5 +75,4 @@ public class SpaceView extends Button implements Observer {
             }
         }
     }
-
 }

@@ -46,23 +46,17 @@ public class SpaceEventHandler implements EventHandler<ActionEvent> {
             Space space = spaceView.space;
             if (space != null) {
                 Board board = space.board;
-                Space right = board.getSpace(space.x + 1, space.y);
-                Space left = board.getSpace(space.x - 1, space.y);
-                Space down = board.getSpace(space.x, space.y - 1);
-                Space up = board.getSpace(space.x, space.y + 1);
-                Space cykliskRight = board.getSpace(space.x + 7, space.y);
-                Space cykliskLeft = board.getSpace(space.x - 7, space.y);
-                Space cykliskDown = board.getSpace(space.x, space.y - 7);
-                Space cykliskUp = board.getSpace(space.x, space.y + 7);
+                Space right = board.getSpace((space.x + 1) % board.width, space.y);
+                Space left = board.getSpace((space.x + board.width-1) % board.width, space.y);
+                Space down = board.getSpace(space.x, (space.y +1) % board.height);
+                Space up = board.getSpace(space.x, (space.y + board.height-1)%board.height);
 
-                if ((right != null && right.isActive()) || (left != null && left.isActive()) || ( down != null && down.isActive()) || (up != null && up.isActive()) ||
-                (right != null && cykliskRight.isActive()) || (left != null && cykliskLeft.isActive()) || ( down != null && cykliskDown.isActive()) || (up != null && cykliskUp.isActive())) {
+
+                if ((right != null && right.isActive()) || (left != null && left.isActive()) || ( down != null && down.isActive()) || (up != null && up.isActive())) {
                     board.setActive(space);
                     event.consume();
                 }
-
             }
         }
     }
-
 }

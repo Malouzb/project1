@@ -49,7 +49,7 @@ public class Space extends Subject {
     }
 
     public boolean isActive() {
-        return active;
+            return active;
     }
 
     public void setActive(boolean active) {
@@ -57,7 +57,7 @@ public class Space extends Subject {
         this.active = active;
         if (this.active != oldActive) {
             this.notifyChange();
+
         }
     }
-
 }

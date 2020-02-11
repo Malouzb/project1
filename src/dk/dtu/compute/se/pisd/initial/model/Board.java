@@ -36,19 +36,20 @@ public class Board extends Subject {
 
     private Space[][] spaces;
     private Space active;
+    private int count = 0;
 
     public Board(int width, int height) {
         this.width = width;
         this.height = height;
         spaces = new Space[width][height];
         for (int x = 0; x < width; x++) {
-            for(int y = 0; y < height; y++) {
-                Space space = new Space(this, x, y, (x+y)%2 == 0);
+            for (int y = 0; y < height; y++) {
+                Space space = new Space(this, x, y, (x + y) % 2 == 0);
                 spaces[x][y] = space;
             }
         }
         if (width > 0 && height > 0) {
-            Space space = getSpace(0,0);
+            Space space = getSpace(0, 0);
             space.isActive();
             active = space;
         }
@@ -68,20 +69,18 @@ public class Board extends Subject {
     }
 
     public void setActive(Space space) {
-        int count = 0;
         if (space.board == this) {
             if (active != null && active != space) {
                 active.setActive(false);
                 active = space;
                 active.setActive(true);
                 count++;
-
-
+                System.out.println(count);
                 // not needed for current version; but for being clear,
                 // we add a notifyChange() here anyway!
                 notifyChange();
             }
         }
     }
-
 }
+
